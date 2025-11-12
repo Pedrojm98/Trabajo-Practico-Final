@@ -1,0 +1,24 @@
+🔹 Ejemplo 3: Hospital
+Entidades:
+
+- Paciente
+
+- Doctor
+
+- Cita
+
+- Historial Médico
+
+Relaciones:
+
+Doctor – Cita:
+👉 Un doctor atiende muchas citas, pero cada cita corresponde a un solo doctor.
+Relación: Doctor (1) — (N) Cita
+
+Paciente – Cita:
+👉 Un paciente puede tener muchas citas, y cada cita es de un solo paciente.
+Relación: Paciente (1) — (N) Cita
+
+Paciente – Historial Médico:
+👉 Cada paciente tiene un solo historial médico, y cada historial médico pertenece a un solo paciente.
+Relación: Paciente (1) — (1) HistorialMédico
