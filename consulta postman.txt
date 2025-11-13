@@ -1,0 +1,163 @@
+🏥 Proyecto Hospital – Guía de Pruebas Postman
+🔧 Base URL (por defecto en Spring Boot)
+http://localhost:8080/api
+
+🚩 1️⃣ DOCTOR – CRUD COMPLETO
+➕ Crear un doctor
+
+POST → /api/doctores
+
+{
+  "nombre": "Dra. Laura Méndez",
+  "especialidad": "Cardiología",
+  "telefono": "1144556677",
+  "email": "lmendez@hospital.com"
+}
+
+📋 Ver todos los doctores
+
+GET → /api/doctores
+
+🔍 Ver un doctor por ID
+
+GET → /api/doctores/1
+
+✏️ Actualizar doctor
+
+PUT → /api/doctores/1
+
+{
+  "nombre": "Dra. Laura Méndez",
+  "especialidad": "Cardiología y Nutrición",
+  "telefono": "1144556677",
+  "email": "lmendez@hospital.com"
+}
+
+🗑️ Eliminar doctor
+
+DELETE → /api/doctores/1
+
+🧍‍♂️ 2️⃣ PACIENTE – CRUD COMPLETO
+➕ Crear paciente
+
+POST → /api/pacientes
+
+{
+  "nombre": "Juan Pérez",
+  "direccion": "Calle Falsa 123",
+  "telefono": "1122334455",
+  "email": "juanperez@gmail.com"
+}
+
+📋 Ver todos los pacientes
+
+GET → /api/pacientes
+
+🔍 Ver paciente por ID
+
+GET → /api/pacientes/1
+
+✏️ Actualizar paciente
+
+PUT → /api/pacientes/1
+
+{
+  "nombre": "Juan Pérez",
+  "direccion": "Av. San Martín 555",
+  "telefono": "1122334455",
+  "email": "juanperez@gmail.com"
+}
+
+🗑️ Eliminar paciente
+
+DELETE → /api/pacientes/1
+
+📅 3️⃣ TURNOS – (Entidad Relacional) ⭐
+➕ Crear turno
+
+POST → /api/turnos
+
+{
+  "fecha_turno": "2025-11-20",
+  "hora_turno": "10:30",
+  "motivo_consulta": "Control general",
+  "estado_del_turno": "Pendiente",
+  "doctor": { "id_doctor": 1 },
+  "paciente": { "id_paciente": 1 }
+}
+
+📋 Ver todos los turnos
+
+GET → /api/turnos
+
+🔍 Ver turno por ID
+
+GET → /api/turnos/1
+
+✏️ Actualizar turno
+
+PUT → /api/turnos/1
+
+{
+  "fecha_turno": "2025-11-21",
+  "hora_turno": "11:00",
+  "motivo_consulta": "Revisión general",
+  "estado_del_turno": "Completado",
+  "doctor": { "id_doctor": 1 },
+  "paciente": { "id_paciente": 1 }
+}
+
+🗑️ Eliminar turno
+
+DELETE → /api/turnos/1
+
+📋 4️⃣ HISTORIAL MÉDICO – (Depende de Paciente)
+➕ Crear historial médico
+
+POST → /api/historiales
+
+{
+  "diagnostico": "Hipertensión leve",
+  "tratamiento": "Control semanal y medicación diaria",
+  "paciente": { "id_paciente": 1 }
+}
+
+📋 Ver todos los historiales
+
+GET → /api/historiales
+
+🔍 Ver historial por ID
+
+GET → /api/historiales/1
+
+✏️ Actualizar historial
+
+PUT → /api/historiales/1
+
+{
+  "diagnostico": "Hipertensión controlada",
+  "tratamiento": "Continuar medicación por 3 meses",
+  "paciente": { "id_paciente": 1 }
+}
+
+🗑️ Eliminar historial
+
+DELETE → /api/historiales/1
+
+🧠 ORDEN RECOMENDADO PARA EJECUTAR EN POSTMAN
+Paso	Entidad	Método	Motivo
+1️⃣	Doctor	POST	Crear doctores
+2️⃣	Paciente	POST	Crear pacientes
+3️⃣	Turno	POST	Asignar citas (usa Doctor y Paciente)
+4️⃣	Historial	POST	Registrar diagnósticos del paciente
+5️⃣	GET globales	GET	Comprobar vínculos
+6️⃣	PUT / DELETE	PUT / DELETE	Actualizar o limpiar datos
+🧰 OPCIONAL: Consultas específicas interesantes
+
+Puedes agregar endpoints más avanzados si los deseas:
+
+Descripción	Ejemplo de endpoint	Tipo
+Buscar turnos por doctor	/api/turnos/doctor/1	GET
+Buscar turnos por paciente	/api/turnos/paciente/1	GET
+Buscar pacientes por nombre	/api/pacientes/nombre/Juan	GET
+Buscar doctores por especialidad	/api/doctores/especialidad/Cardiología	GET
